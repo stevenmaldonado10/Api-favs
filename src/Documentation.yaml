@@ -1,0 +1,197 @@
+swagger: "2.0"
+info:
+  description: "Esta es una API REST para realizar un CRUD de lista de favoritos para usuarios."
+  version: "1.0.0"
+  title: "API FAVS"
+ 
+tags:
+- name: "users"
+  description: "colección en MongoDB"
+- name: "favs"
+  description: "Colección de lista de favs"
+
+schemes:
+- "http"
+paths:
+  /auth/local/register:
+    post:
+      tags:
+      - "users"
+      summary: "registro de usuarios"
+      description: ""
+      operationId: "createUsersWithArrayInput"
+      produces:
+      
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of user object"
+        required: true
+        schema:
+          type: "object"
+          items:
+            $ref: "#/definitions/users"
+      responses:
+        default:
+          description: "successful operation"
+  /auth/local/login:
+    post:
+      tags:
+      - "users"
+      summary: "Login de usuario con token"
+      description: ""
+      operationId: "createUsersWithListInput"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of user object"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/users"
+      responses:
+        default:
+          description: "successful operation"
+  
+  /api/favs:
+    get:
+      tags:
+      - "favs"
+      summary: "login de usuarios"
+      description: ""
+      operationId: "ReturnUsers"
+      produces:
+      
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of user object"
+        required: true
+        schema:
+          type: "object"
+          items:
+            $ref: "#/definitions/favs"
+      responses:
+        default:
+          description: "successful operation"
+  
+  /api/favss:
+    post:
+      tags:
+      - "favs"
+      summary: "creación de usuarios"
+      description: ""
+      operationId: "createUsers"
+      produces:
+      
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of user object"
+        required: true
+        schema:
+          type: "object"
+          items:
+            $ref: "#/definitions/favs"
+      responses:
+        default:
+          description: "successful operation"
+          
+  /api/favs:id:
+    get:
+      tags:
+      - "favs"
+      summary: "Retornar una lista de favs por ID"
+      description: ""
+      operationId: "ReturnlistId"
+      produces:
+      
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of user object"
+        required: true
+        schema:
+          type: "object"
+          items:
+            $ref: "#/definitions/favs"
+      responses:
+        default:
+          description: "successful operation"        
+          
+  /api/favss:id:
+    delete:
+      tags:
+      - "favs"
+      summary: "Elimina una lista de favs por ID"
+      description: ""
+      operationId: "DeletelistId"
+      produces:
+      
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of user object"
+        required: true
+        schema:
+          type: "object"
+          items:
+            $ref: "#/definitions/favs"
+      responses:
+        default:
+          description: "successful operation"                
+  
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  
+  
+  users:
+    type: "object"
+    properties:
+      
+      password:
+        type: "string"
+      email:
+        type: "string"
+      
+    xml:
+      name: "User"
+  favs:
+    type: "object"
+    properties:
+      
+      list:
+        type: "string"
+      fav:
+        type: "array"
+        items:
+          type: "string"
+          
+          
+      userEmail:
+        type: "string"  
+      
+    xml:
+      name: "User"    
+  
+
