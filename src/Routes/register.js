@@ -32,7 +32,9 @@ router.post('/register', async (req, res) =>{
           } 
         catch(e){
               console.log(e);
-        }      
-}  )
+              
+            }
+
+})
 
 module.exports = router;

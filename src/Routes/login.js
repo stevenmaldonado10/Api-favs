@@ -33,8 +33,12 @@ router.post('/login', async (req, res) =>{
     })
       }
     catch(e){
-          console.log(e);
-    }   
-}  )
+      res.status(400).json({
+            email: req.body.email,
+            password: req.body.password 
+            })
+      }
+    })
+ 
 
 module.exports = router;
